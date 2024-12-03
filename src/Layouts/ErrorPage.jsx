@@ -16,7 +16,7 @@ const ErrorPage = () => {
                 </p>
 
                 <Link to={'/'} className='text-center mx-auto pb-4'>
-                    <button className='btn btn-sm md:btn-md btn-neutral btn-outline text-center mx-auto '>
+                    <button className='btn btn-sm md:btn-md btn-neutral btn-outline text-center mx-auto rounded-full'>
                         Go back Home
                     </button>
                 </Link>
@@ -33,3 +33,6 @@ const ErrorPage = () => {
 };
 
 export default ErrorPage;
+
+
+
