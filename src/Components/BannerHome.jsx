@@ -60,7 +60,8 @@ const BannerHome = () => {
                         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-5 w-full  bg-[#fdfdfd]   ">
 
                             {/* ---------------text part 1 ------------------ */}
-                            <div className='bg-[#87A922] md:h-full flex flex-col px-10 md:px-0 py-5 md:py-0 items-center md:items-start text-center md:text-left  justify-center gap-3 md:gap-10 md:rounded-e-full md:w-3/4'>
+                            <div 
+                            className='bg-[#87A922] md:h-full flex flex-col px-10 md:px-0 py-5 md:py-0 items-center md:items-start text-center md:text-left  justify-center gap-3 md:gap-10 md:rounded-e-full md:w-3/4'>
                                 <h1 className="md:text-6xl text-2xl font-bold md:px-10 ">
                                     Get the best kinds of your dream visa.
                                 </h1>
@@ -81,17 +82,14 @@ const BannerHome = () => {
                             <div className='w-full md:w-1/2'>
                                 <img src={many} className='mx-auto w-1/2 md:w-full mt-5' />
                             </div>
-
-
                         </div>
 
+                        {/* ------------------------------buttons-------------------- */}
                         <div
                             className="absolute left-5 right-5 top-[420px] md:top-1/2 flex -translate-y-1/2 transform gap-2 md:justify-between">
                             <a href="#item1" className="btn btn-xs md:btn-sm btn-primary btn-circle">❮ </a>
                             <a href="#item3" className="btn btn-xs md:btn-sm btn-primary btn-circle"> ❯</a>
                         </div>
-
-
                     </div>
 
                     {/* --------------------slide-3------------------- */}
@@ -138,9 +136,6 @@ const BannerHome = () => {
 
             </div>
         </div>
-
-
-
     );
 };
 

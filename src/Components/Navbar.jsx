@@ -8,15 +8,15 @@ const Navbar = () => {
         <li><NavLink to={'/allVisa'}>All visas</NavLink></li>
         <li><NavLink to={'/addVisa'}>Add Visa</NavLink></li>
 
-        <li>
+        {/* <li>
             <details>
                 <summary>My work</summary>
-                <ul className="p-2 bg-secondary-content text-gray-400">
-                    <li className='mb-2 w-40'><NavLink to={'/myAdded'}>My added visas</NavLink></li>
-                    <li><NavLink to={'/myApply'}>My Visa applications</NavLink></li>
-                </ul>
+                <ul className="p-2 bg-secondary-content text-gray-400"> */}
+        <li className=''><NavLink to={'/myAdded'}>My added visas</NavLink></li>
+        <li><NavLink to={'/myApply'}>My Visa applications</NavLink></li>
+        {/* </ul>
             </details>
-        </li>
+        </li> */}
     </>
 
 

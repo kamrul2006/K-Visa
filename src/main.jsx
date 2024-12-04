@@ -6,11 +6,17 @@ import HomePage from './Layouts/HomePage';
 import ErrorPage from './Layouts/ErrorPage';
 import LoginPage from './Layouts/LoginPage';
 import Signup from './Layouts/Signup';
+import AddVisa from './Layouts/AddVisa';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage></HomePage>,
+    errorElement: <ErrorPage></ErrorPage>
+  },
+  {
+    path: "/addVisa",
+    element: <AddVisa></AddVisa>,
     errorElement: <ErrorPage></ErrorPage>
   },
   {
