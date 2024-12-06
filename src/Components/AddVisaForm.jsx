@@ -25,17 +25,25 @@ const AddVisaPage = () => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const VisaData = {
+
             countryImage: formData.get("countryImage "),
+
             countryName: formData.get("countryName "),
+
             visaType: formData.get("visaType "),
+
             processingTime: formData.get("processingTime "),
 
             requiredDocuments: selectedLabels,
 
             description: formData.get("description "),
+
             ageRestriction: formData.get("ageRestriction "),
+
             fee: formData.get("fee "),
+
             validity: formData.get("validity "),
+            
             applicationMethod: formData.get("applicationMethod ")
         };
 

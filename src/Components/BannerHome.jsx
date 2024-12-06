@@ -33,7 +33,7 @@ const BannerHome = () => {
                                     We can ensure you the honesty.
                                 </p>
 
-                                <Link to={'/allVisa'} className='pb-4 md:px-36'>
+                                <Link to={'/allVisa'} className='  md:px-36'>
                                     <button className='btn btn-sm md:btn-md btn-neutral btn-outline  rounded-2xl'>
                                         See our Visas
                                     </button>
@@ -71,7 +71,7 @@ const BannerHome = () => {
                                     We can ensure you the honesty.
                                 </p>
 
-                                <Link to={'/allVisa'} className='pb-4 md:px-10'>
+                                <Link to={'/allVisa'} className='  md:px-10'>
                                     <button className='btn btn-sm md:btn-md btn-neutral btn-outline  rounded-2xl'>
                                         See our Visas
                                     </button>
@@ -113,7 +113,7 @@ const BannerHome = () => {
                                     We can ensure you the honesty.
                                 </p>
 
-                                <Link to={'/allVisa'} className='pb-4 md:px-36'>
+                                <Link to={'/allVisa'} className='  md:px-36'>
                                     <button className='btn btn-sm md:btn-md btn-neutral btn-outline  rounded-2xl'>
                                         See our Visas
                                     </button>
