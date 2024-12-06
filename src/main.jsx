@@ -7,12 +7,25 @@ import ErrorPage from './Layouts/ErrorPage';
 import LoginPage from './Layouts/LoginPage';
 import Signup from './Layouts/Signup';
 import AddVisa from './Layouts/AddVisa';
+import AllVisa from './Layouts/AllVisa';
+import RootPage from './Layouts/RootPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage></HomePage>,
-    errorElement: <ErrorPage></ErrorPage>
+    element: <RootPage></RootPage>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <HomePage></HomePage>
+      },
+      {
+        path: "/allVisa",
+        loader: () => fetch('http://localhost:5000/visas'),
+        element: <AllVisa></AllVisa>
+      },
+    ]
   },
   {
     path: "/addVisa",

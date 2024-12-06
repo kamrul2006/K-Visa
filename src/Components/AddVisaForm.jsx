@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 const AddVisaPage = () => {
+
+    const [selectedLabels, setSelectedLabels] = useState([]);
+
+    const handleCheckboxChange = (e) => {
+        const { checked } = e.target;
+        const labelText = e.target.nextSibling.textContent.trim(); // Get label text
+
+        // Update the selectedLabels array
+        if (checked) {
+            setSelectedLabels((prev) => [...prev, labelText]);
+        } else {
+            setSelectedLabels((prev) =>
+                prev.filter((text) => text !== labelText)
+            );
+        }
+    };
+
+    console.log(selectedLabels)
 
     const HandleAddVisa = async (e) => {
         e.preventDefault();
@@ -11,13 +29,19 @@ const AddVisaPage = () => {
             countryName: formData.get("countryName "),
             visaType: formData.get("visaType "),
             processingTime: formData.get("processingTime "),
-            requiredDocuments: formData.getAll("requiredDocuments "),
+
+            requiredDocuments: selectedLabels,
+
             description: formData.get("description "),
             ageRestriction: formData.get("ageRestriction "),
             fee: formData.get("fee "),
             validity: formData.get("validity "),
             applicationMethod: formData.get("applicationMethod ")
         };
+
+
+        console.log(VisaData)
+
         //------------------sending data to server----------------------
         fetch('http://localhost:5000/visas', {
             method: "POST",
@@ -43,9 +67,9 @@ const AddVisaPage = () => {
     }
 
 
-    const visaTypes = ["Tourist visa ", "Student visa ", "Official visa","Free visa", "Medical visa"];
+    const visaTypes = ["Tourist visa ", "Student visa ", "Official visa", "Free visa", "Medical visa"];
 
-    const requiredDocumentsOptions = ["Valid passport", "Visa application form", "Recent passport-sized photograph","Medical report", "Covid-19 Vaccination Card"];
+    const requiredDocumentsOptions = ["Valid passport", "Visa application form", "Recent passport-sized photograph", "Medical report", "Covid-19 Vaccination Card"];
 
 
     return (
@@ -60,28 +84,29 @@ const AddVisaPage = () => {
                         <input type="text "
                             name="countryImage "
                             placeholder="Enter image URL "
-                            className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md  focus:ring-[#87A922] focus:border-[#87A922] p-2 " required />
+                            className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md    p-2 " required />
                     </div>
 
                     <div className="mb-4 ">
                         <label className="block text-sm font-medium text-gray-700 "> Country Name </label> <input type="text " name="countryName " placeholder="Enter country name " className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md 
                         focus:shadow-2xl
-                        focus:ring-[#87A922] focus:border-[#87A922] p-2 " required />
+                          p-2 " required />
                     </div>
 
                     <div className="mb-4 ">
                         <label className="block text-sm font-medium text-gray-700 "> Visa Type </label>
-                        <select name="visaType " className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md focus:ring-[#87A922] focus:border-[#87A922] p-2 " required>
+                        <select name="visaType " className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md   p-2 " required>
                             <option value=" ">Select a visa type</option> {visaTypes.map((type, index) => (<option key={index} value={type}>{type}</option>))} </select>
                     </div>
 
                     <div className="mb-4 ">
-                        <label className="block text-sm font-medium text-gray-700 "> Processing Time </label> <input type="text " name="processingTime " placeholder="e.g., 5-7 business days " className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md focus:ring-[#87A922] focus:border-[#87A922] p-2 " required />
+                        <label className="block text-sm font-medium text-gray-700 "> Processing Time </label> <input type="text " name="processingTime " placeholder="e.g., 5-7 business days " className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md   p-2 " required />
                     </div>
 
                     <div className="mb-4 ">
                         <label className="block text-sm font-medium text-gray-700 "> Required Documents </label>
-                        <div className="flex flex-wrap gap-2 mt-2 ">
+
+                        <div className="md:flex flex-wrap gap-2 mt-2 ">
                             {requiredDocumentsOptions.map((doc, index) => (
                                 <label key={index}
                                     className="flex items-center ">
@@ -89,36 +114,42 @@ const AddVisaPage = () => {
                                         type="checkbox"
                                         name="requiredDocuments "
                                         // value={"abc", "asd","aaa"}
+                                        onChange={handleCheckboxChange}
                                         className="mr-2 " />
                                     {doc}
                                 </label>))}
                         </div>
+
                     </div>
 
                     <div className="mb-4 ">
                         <label className="block text-sm font-medium text-gray-700 "> Description </label>
 
                         <textarea
+                            className="mt-1 w-full border border-gray-300 shadow-md p-2 rounded-md"
                             name="description "
-                            placeholder="Enter description "
-                            className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md focus:ring-[#87A922] focus:border-[#87A922] p-2 " required />
+                            placeholder="Enter description " />
                     </div>
 
                     <div className="mb-4 ">
                         <label className="block text-sm font-medium text-gray-700 "> Age Restriction </label>
-                        <input type="number " name="ageRestriction " placeholder="Enter minimum age " className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md focus:ring-[#87A922] focus:border-[#87A922] p-2 " required />
+                        <input type="number" name="ageRestriction" placeholder="Enter minimum age" id="hh" required className="mt-1 w-full shadow-md p-2 border border-gray-300" />
                     </div>
 
                     <div className="mb-4 ">
                         <label className="block text-sm font-medium text-gray-700 "> Fee (in USD) </label>
-                        <input type="number " name="fee " placeholder="Enter visa fee " className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md focus:ring-[#87A922] focus:border-[#87A922] p-2 " required />
+                        <input type="number" name="fee" placeholder="Enter visa fee" id="hh" required className="mt-1 w-full shadow-md p-2 border border-gray-300" />
                     </div>
 
                     <div className="mb-4 ">
                         <label className="block text-sm font-medium text-gray-700 "> Validity (e.g., 6 months, 1 year) </label>
-                        <input type="text " name="validity " placeholder="Enter validity period " className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md focus:ring-[#87A922] focus:border-[#87A922] p-2 " required /> </div> <div className="mb-4 ">
+                        <input type="text" name="validity" placeholder="Enter validity period" id="hh" required className="mt-1 w-full shadow-md p-2 border border-gray-300" />
+
+                    </div>
+
+                    <div className="mb-4 ">
                         <label className="block text-sm font-medium text-gray-700 "> Application Method </label>
-                        <input type="text " name="applicationMethod " placeholder="Enter application method " className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md focus:ring-[#87A922] focus:border-[#87A922] p-2 " required />
+                        <input type="text " name="applicationMethod " placeholder="Enter application method " className="mt-1 block w-full border border-gray-300 rounded-md  shadow-md   p-2 " required />
                     </div>
 
                     <div>
