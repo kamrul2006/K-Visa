@@ -16,7 +16,7 @@ const SomeVisa = () => {
 
 
         <div
-            className='text-center bg-yellow-500 rounded-full my-10 md:my-20'>
+            className='text-center bg-success rounded-full my-10 md:my-20'>
             <h1 className='text-2xl bg-white md:bg-transparent md:text-4xl font-bold md:pt-10 pt-5'>
                 Some Of our recently added Visas
             </h1>
@@ -33,7 +33,7 @@ const SomeVisa = () => {
             </div>
 
 
-            <Marquee speed={150} className="space-x-5 bg-yellow-500 py-4">
+            <Marquee speed={90} pauseOnHover={true} className="space-x-5 bg-success py-4">
 
                 {visas.slice(Math.max(visas.length - 6, 0)).map(visa => <div
                     key={visa._id}
@@ -42,8 +42,9 @@ const SomeVisa = () => {
 
                     <div className=" shadow-md flex md:items-center gap-5  px-5 py-3 border rounded-md  md:h-[250px] bg-[#ffffffad]">
 
-                        <div className="md:w-[200px] w-[100px] h-[100px] md:h-[200px]">
-                            <img src={visa.countryImage} className="w-full h-full rounded-full object-cover shadow-xl" />
+                        <div className="md:w-[160px] w-[100px] h-[100px] md:h-[160px] flex flex-col justify-between items-center gap-4">
+                            <img src={visa.countryImage} className="w-3/4 h-3/4 rounded-full object-cover shadow-xl" />
+                            <btn className="btn-sm btn btn-outline">Details</btn>
                         </div>
 
                         <div className=" w-[150px] md:w-[300px] text-center">
@@ -52,13 +53,24 @@ const SomeVisa = () => {
                             <div>
                                 <h1 className="text-xl md:text-3xl font-bold">{visa.countryName}</h1>
 
-                                <p className=" text-sm text-center md:text-xl font-bold">
-                                    Visa Fee:  {visa.fee} $
-                                </p>
+                                <div className='bg-white rounded-md py-2'>
+                                    <p className=" text-sm text-center md:text-xl font-bold">
+                                        Visa Fee:  {visa.fee} $
+                                    </p>
 
-                                <p className="text-sm text-center md:text-xl font-bold">
-                                    Visa validity:  {visa.validity}
-                                </p>
+                                    <p className="text-sm text-center md:text-xl font-bold">
+                                        Visa validity:  {visa.validity}
+                                    </p>
+
+                                    <p className="text-sm text-center font-bold">
+                                        Visa processing Time:  {visa.processingTime}
+                                    </p>
+
+                                    <p className="text-sm text-center font-bold">
+                                        Visa application Method:  {visa.applicationMethod}
+                                    </p>
+                                </div>
+
 
                                 <p className="my-2 bg-white text-center py-1 rounded-full text-yellow-950 md:text-lg text-sm font-serif italic font-semibold px-2">Visa Type: <br /> {visa.visaType}</p>
                             </div>
