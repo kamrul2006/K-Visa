@@ -7,7 +7,6 @@ const PrivetRout = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
 
     const location = useLocation()
-    // console.info(location)
 
     if (loading) {
         return <div>
