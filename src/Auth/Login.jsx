@@ -67,7 +67,7 @@ const LoginPage = () => {
   return (
     <div>
       <Link to={'/'} className="my-10 mx-auto">
-      <button className="btn btn-outline mx-10 my-10 px-5 text-xl "><FaAnglesLeft />  Go Back to Home</button>
+        <button className="btn btn-outline mx-10 my-10 px-5 text-xl "><FaAnglesLeft />  Go Back to Home</button>
       </Link>
       <div className="min-h-screen flex items-center justify-center ">
         <div className="p-8 rounded-lg  max-w-md w-full">
@@ -79,6 +79,7 @@ const LoginPage = () => {
               <label className="text-sm my-1">
                 Email Address
               </label>
+
               <input
                 type="email"
                 ref={emailRef}
@@ -95,6 +96,7 @@ const LoginPage = () => {
               <label className="my-1 text-sm">
                 Password
               </label>
+
               <input
                 type={show ? "text" : "password"}
                 id="password"
@@ -106,7 +108,7 @@ const LoginPage = () => {
 
               {/* --------------------------Forgot password section---------------------- */}
 
-              <label  className=" text-sm"><Link  className="text-indigo-500 font-semibold hover:underline">Forgot password?</Link>
+              <label className=" text-sm"><Link className="text-indigo-500 font-semibold hover:underline">Forgot password?</Link>
               </label>
 
               <button onClick={ShowPassWord} className="btn btn-ghost btn-xs absolute right-3 top-8 text-lg">

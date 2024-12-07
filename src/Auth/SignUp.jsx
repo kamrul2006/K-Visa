@@ -31,10 +31,6 @@ const SignUpSection = () => {
         const Name = e.target.name.value
         const Photo = e.target.photoUrl.value
         const Terms = e.target.terms.checked
-        // console.log('Name:-', Name)
-        // console.log('Email:-', Email)
-        // console.log('Password:-', Password)
-        // console.log('Terms:-', (Terms))
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
         if (!Terms) {
