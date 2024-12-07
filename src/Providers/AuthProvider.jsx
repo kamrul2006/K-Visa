@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { auth } from '../Firebase/firebase.config'
@@ -43,40 +41,22 @@ const AuthProvider = ({ children }) => {
             });
     }
 
-    //--------------------updating Profile------------------
-    const updatedProfile = (updatedData) => {
-        return updateProfile(auth.currentUser, updatedData)
-    }
-
-
-    //----------------------------------TEXT_TO_SPEECH---------------------------
-    const WordBoLa = (w) => {
-        if ("speechSynthesis" in window) {
-            const KotahBola = new SpeechSynthesisUtterance(w);
-            KotahBola.lang = "hi-IN"; // Set language to English
-            speechSynthesis.speak(KotahBola);
-        } else {
-            alert("Sorry LINGO BINGO cant't do text-to-speech at this minuet.");
+        //--------------------updating Profile------------------
+        const updatedProfile = (updatedData) => {
+            return updateProfile(auth.currentUser, updatedData)
         }
-    };
-
-    //-----------------------------------forget passWord------------------------
-
-    const [pEmail, setPEmail] = useState(null)
-
-
+    
 
     //------------value here--------------------------
     const authInfo = {
-        user, setUser,
+        user,
+        setUser,
         CreateUserByMailPass,
         LoginUser,
         UserSignOut,
         loading,
-        updatedProfile,
         GoogleLogin,
-        WordBoLa,
-        pEmail, setPEmail
+        updatedProfile
     }
 
     useEffect(() => {

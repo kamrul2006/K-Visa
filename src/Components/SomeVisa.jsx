@@ -25,7 +25,7 @@ const SomeVisa = () => {
             </p>
 
             <div className="mx-auto mb-5">
-                <Link to={"/allVisa"}>
+                <Link to={"/allVisa/"}>
                     <button className='btn btn-outline btn-sm md:btn-md'>
                         View All Visas
                     </button>
@@ -44,7 +44,9 @@ const SomeVisa = () => {
 
                         <div className="md:w-[160px] w-[100px] h-[100px] md:h-[160px] flex flex-col justify-between items-center gap-4">
                             <img src={visa.countryImage} className="w-3/4 h-3/4 rounded-full object-cover shadow-xl" />
-                            <btn className="btn-sm btn btn-outline">Details</btn>
+
+                            <Link to={`/allVisa/${visa._id}`}>
+                                <button className="btn-sm btn btn-outline">Details</button></Link>
                         </div>
 
                         <div className=" w-[150px] md:w-[300px] text-center">

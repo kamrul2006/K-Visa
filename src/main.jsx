@@ -4,11 +4,14 @@ import './index.css'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import HomePage from './Layouts/HomePage';
 import ErrorPage from './Layouts/ErrorPage';
-import LoginPage from './Layouts/LoginPage';
-import Signup from './Layouts/Signup';
 import AddVisa from './Layouts/AddVisa';
 import AllVisa from './Layouts/AllVisa';
 import RootPage from './Layouts/RootPage';
+import LoginPage from './Auth/Login';
+import SignUpSection from './Auth/SignUp';
+import AuthProvider from './Providers/AuthProvider';
+import PrivetRout from './Privet/Privetrought';
+import VisaDetails from './Components/VisaDetails';
 
 const router = createBrowserRouter([
   {
@@ -23,13 +26,18 @@ const router = createBrowserRouter([
       {
         path: "/allVisa",
         loader: () => fetch('http://localhost:5000/visas'),
-        element: <AllVisa></AllVisa>
+        element: <PrivetRout><AllVisa></AllVisa></PrivetRout>,
+      },
+      {
+        path: '/allVisa/:id',
+        loader: () => fetch('http://localhost:5000/visas'),
+        element: <PrivetRout><VisaDetails></VisaDetails></PrivetRout>,
       },
     ]
   },
   {
     path: "/addVisa",
-    element: <AddVisa></AddVisa>,
+    element: <PrivetRout><AddVisa></AddVisa></PrivetRout>,
     errorElement: <ErrorPage></ErrorPage>
   },
   {
@@ -39,13 +47,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/signUp",
-    element: <Signup></Signup>,
+    element: <SignUpSection></SignUpSection>,
     errorElement: <ErrorPage></ErrorPage>
   },
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} /></AuthProvider>
   </StrictMode>,
 )

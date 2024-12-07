@@ -70,15 +70,14 @@ const AllVisa = () => {
                     <div className=" flex flex-col justify-between items-center gap-4">
 
                         {/* ----------------------text-------------------------- */}
-                        <div className='px-4 md:h-[300px] md:px-10 md:py-5 bg-base-100'>
+                        <div className='px-4 md:h-[320px] md:px-10 md:py-5 bg-base-100'>
                             <p className="my-2 bg-white text-center py-1 rounded-full text-yellow-950 text-lg font-serif italic font-semibold ">Country : {visa.countryName} </p>
 
                             <h1 className="text-xl font-bold">Visa Type : {visa.visaType}</h1>
 
-                            <p className="text-justify pb-3">
+                            <p className="text-justify py-3 ">
                                 {visa.description}
                             </p>
-
 
                         </div>
 
@@ -99,9 +98,10 @@ const AllVisa = () => {
                             </button>
 
                             {/* ---details */}
-                            <button className="btn btn-sm btn-circle">
-                                <img className="w-7" src="https://img.icons8.com/avantgarde/50/about.png" alt="about" />
-                            </button>
+                            <Link to={`/allVisa/${visa._id}`}>
+                                <button className="btn btn-sm btn-circle">
+                                    <img className="w-7" src="https://img.icons8.com/avantgarde/50/about.png" alt="about" />
+                                </button></Link>
                         </div>
 
                     </div>
