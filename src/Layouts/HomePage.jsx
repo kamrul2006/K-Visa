@@ -4,6 +4,7 @@ import Footer from '../Components/Footer';
 import BannerHome from '../Components/BannerHome';
 import SomeVisa from '../Components/SomeVisa';
 import TypeHome from '../Components/TypeHome';
+import AvailableCountry from '../Components/AvailableCountry';
 const HomePage = () => {
     return (
         <div>
@@ -12,6 +13,8 @@ const HomePage = () => {
             <TypeHome></TypeHome>
 
             <SomeVisa></SomeVisa>
+
+            <AvailableCountry></AvailableCountry>
         </div>
     );
 };

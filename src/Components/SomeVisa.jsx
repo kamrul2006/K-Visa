@@ -17,7 +17,7 @@ const SomeVisa = () => {
 
         <div
             className='text-center bg-success rounded-full my-10 md:my-20'>
-            <h1 className='text-2xl bg-white md:bg-transparent md:text-4xl font-bold md:pt-10 pt-5'>
+            <h1 className='text-2xl  md:text-4xl font-bold md:pt-10 pt-5'>
                 Some Of our recently added Visas
             </h1>
             <p className='md:pb-10 md:px-64 text-xs px-24 pt-4 pb-6 md:text-lg'>
