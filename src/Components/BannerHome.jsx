@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import world from '../assets/travel.gif'
+import biman from '../assets/Biman.json'
 import many from '../assets/Many.gif'
 import done from '../assets/dance.gif'
+import Lottie from 'lottie-react';
 
 
 const BannerHome = () => {
@@ -16,10 +17,11 @@ const BannerHome = () => {
 
                     <div id="item1" className="carousel-item relative w-full">
 
-                        <div className="md:flex items-center justify-between gap-5 w-full  bg-[#fcf7f2]   ">
+                        <div className="md:flex items-center justify-between gap-5 w-full ">
                             {/* ------------------image------------------- */}
-                            <div className='md:'>
-                                <img src={world} className='mx-auto w-1/2 md:w-full mt-5' />
+                            <div className='md:w-1/2 flex flex-col items-center justify-center'>
+                                {/* <img src={world} className='mx-auto w-1/2 md:w-full mt-5' /> */}
+                                <Lottie animationData={biman} ></Lottie>
                             </div>
 
                             {/* ---------------text part 1 ------------------ */}

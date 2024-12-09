@@ -1,22 +1,24 @@
 import { Link } from 'react-router-dom';
 import imm from '../assets/ppl.png';
+import Lottie from "lottie-react";
+import palne from "../assets/Plane.json"
 
 const AvailableCountry = () => {
     return (
         <div className='ring-8 ring-green-800 mt-5'>
 
-<div className='flex items-center flex-col md:hidden'>
-                        <h1 className="text-4xl my-5 text-center font-bold ">Available Country </h1>
-                        <p className='font-serif italic px-20 text-xs text-center'>
-                            Here are some of our available country you can visit. Click the button below to Get all the visa information.
-                        </p>
+            <div className='flex items-center flex-col md:hidden'>
+                <h1 className="text-4xl my-5 text-center font-bold ">Available Country </h1>
+                <p className='font-serif italic px-20 text-xs text-center'>
+                    Here are some of our available country you can visit. Click the button below to Get all the visa information.
+                </p>
 
-                        <Link to={"/allVisa"}>
-                            <button className="btn btn-outline btn-sm my-5">
-                                View All
-                            </button>
-                        </Link>
-                    </div>
+                <Link to={"/allVisa"}>
+                    <button className="btn btn-outline btn-sm my-5">
+                        View All
+                    </button>
+                </Link>
+            </div>
 
             <div className='grid grid-cols-1 gap-6 mx-5 md:px-20 md:mx-auto my-4  md:my-20 md:grid-cols-3 lg:grid-cols-5 items-center justify-center'>
 
@@ -153,9 +155,6 @@ const AvailableCountry = () => {
                         </div>
                     </div>
 
-
-
-
                 </div>
 
 
@@ -176,7 +175,8 @@ const AvailableCountry = () => {
                     </div>
 
 
-                    <img src={imm} alt="" />
+                    <Lottie animationData={palne} loop={true} className='rounded-full'></Lottie>
+
                 </div>
 
 
