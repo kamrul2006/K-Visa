@@ -13,7 +13,7 @@ import AuthProvider from './Providers/AuthProvider';
 import PrivetRout from './Privet/Privetrought';
 import VisaDetails from './Components/VisaDetails';
 import MyAdded from './Layouts/MyAdded';
-import MyApplic from './MyApplic';
+import MyApplic from './Layouts/MyApplic';
 
 const router = createBrowserRouter([
   {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/myApply',
-        loader: () => fetch("http://localhost:5000/visas"),
+        loader: () => fetch("http://localhost:5000/apply"),
         element: <PrivetRout><MyApplic></MyApplic></PrivetRout>,
       },
     ]

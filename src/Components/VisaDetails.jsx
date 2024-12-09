@@ -26,12 +26,11 @@ const VisaDetails = () => {
         const Lname = formData.Lname.value
         const email = formData.Email.value
         const applyDate = formData.date.value
-        const applyFee = formData.fee.value
         const name = Fname + " " + Lname
         const visaInfo = visa
 
         const AppliCationData = {
-            email, applyDate, applyFee, name, visaInfo
+            email, applyDate, name, visaInfo
         }
 
         // console.log(AppliCationData)
@@ -53,7 +52,7 @@ const VisaDetails = () => {
                         icon: 'success',
                         confirmButtonText: "OK"
                     })
-                    e.target.reset()
+                    handleButtonClick()
                 }
 
             })
