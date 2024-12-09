@@ -3,9 +3,29 @@ import biman from '../assets/Biman.json'
 import many from '../assets/Many.gif'
 import done from '../assets/dance.gif'
 import Lottie from 'lottie-react';
+import { Cursor, useTypewriter } from 'react-simple-typewriter'
+
+
+
 
 
 const BannerHome = () => {
+    const [text] = useTypewriter({
+        words: [' Visa Made Easy', ' Dreams Made Possible'],
+        loop: true
+    })
+    const [texti] = useTypewriter({
+        words: ['      Get the best kinds of ', ' your dream visa'],
+        loop: true
+    })
+    const [textii] = useTypewriter({
+        words: ['Fulfill your life with ', ' some sweet memory.'],
+        loop: true
+    })
+
+
+
+
     return (
         <div className=" ">
 
@@ -27,10 +47,13 @@ const BannerHome = () => {
                             {/* ---------------text part 1 ------------------ */}
                             <div className='bg-[#87A922] md:h-full flex flex-col px-10 md:px-0 py-5 md:py-0 items-center md:items-start text-center md:text-left  justify-center gap-3 md:gap-10 md:rounded-s-full md:w-3/4'>
                                 <h1 className="md:text-6xl text-2xl font-bold md:pl-36 md:pr-1">
-                                    Visa Made Easy Dreams Made Possible
+                                    <span>{text}</span>
+                                    <Cursor cursorColor='red' />
                                 </h1>
 
                                 <p className='md:pl-36 text-xs md:text-base font-serif italic'>
+
+
                                     Get your Visa easily with K-VISA. For trusted and and safe service you can contact with us. <br />
                                     We can ensure you the honesty.
                                 </p>
@@ -62,10 +85,11 @@ const BannerHome = () => {
                         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-5 w-full  bg-[#fdfdfd]   ">
 
                             {/* ---------------text part 1 ------------------ */}
-                            <div 
-                            className='bg-[#87A922] md:h-full flex flex-col px-10 md:px-0 py-5 md:py-0 items-center md:items-start text-center md:text-left  justify-center gap-3 md:gap-10 md:rounded-e-full md:w-3/4'>
+                            <div
+                                className='bg-[#87A922] md:h-full flex flex-col px-10 md:px-0 py-5 md:py-0 items-center md:items-start text-center md:text-left  justify-center gap-3 md:gap-10 md:rounded-e-full md:w-3/4'>
                                 <h1 className="md:text-6xl text-2xl font-bold md:px-10 ">
-                                    Get the best kinds of your dream visa.
+                                    <span>{texti}</span>
+                                    <Cursor cursorColor='red' />
                                 </h1>
 
                                 <p className='md:pl-10 text-xs md:text-base font-serif italic'>
@@ -107,7 +131,9 @@ const BannerHome = () => {
                             {/* ---------------text part 1 ------------------ */}
                             <div className='bg-[#87A922] md:h-full flex flex-col px-10 md:px-0 py-5 md:py-0 items-center md:items-start text-center md:text-left  justify-center gap-3 md:gap-10 md:rounded-s-full md:w-3/4'>
                                 <h1 className="md:text-6xl text-2xl font-bold md:pl-36 md:pr-1">
-                                    Fulfill your life with some sweet memory.
+                                    <span>{textii}</span>
+                                    <Cursor cursorColor='green' />
+
                                 </h1>
 
                                 <p className='md:pl-36 text-xs md:text-base font-serif italic'>

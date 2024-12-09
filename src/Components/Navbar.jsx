@@ -2,7 +2,13 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import visa from '../assets/visa.gif'
 import { AuthContext } from '../Providers/AuthProvider';
+import { useTypewriter } from 'react-simple-typewriter'
+
 const Navbar = () => {
+    const [text] = useTypewriter({
+        words: ['K-Visas'],
+        loop: true
+    })
 
     const { user, UserSignOut } = useContext(AuthContext)
 
@@ -36,7 +42,7 @@ const Navbar = () => {
                     {/* ----------------name and logo------------------ */}
                     <div className='flex items-center px-5'>
                         <img src={visa} className="md:w-20 w-10 rounded-xl" />
-                        <a className="md:text-3xl text-xl font-serif font-semibold italic ">K-Visa</a>
+                        <a className="md:text-3xl text-xl font-serif font-semibold italic ">  <span>{text}</span></a>
                     </div>
 
 
