@@ -210,7 +210,7 @@ const VisaDetails = () => {
                                     <label className="block text-sm font-medium text-gray-700 "> Fee (in USD) </label>
                                     <input type="number"
                                         name="fee"
-                                        defaultValue={visa.fee}
+                                        defaultValue={visa.fee ? visa.fee : 450}
                                         required
                                         className="  w-full shadow-md  p-2 border border-gray-300" />
                                 </div>

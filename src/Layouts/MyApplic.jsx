@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyApplic = () => {
 
@@ -8,6 +9,40 @@ const MyApplic = () => {
 
     // console.log(applies)
 
+    // -----------------------removing data---------------------
+    const handleRemove = (id) => {
+        // console.log(id)
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to Delete this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/apply/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.deletedCount > 0) {
+                                const remaining = myApp.filter(visa => visa._id !== id)
+                                setApplies(remaining)
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Application has been deleted.",
+                                    icon: "success"
+                                });
+                            }
+                        });
+                }
+            })
+    }
 
     return (
         <div>
@@ -33,15 +68,15 @@ const MyApplic = () => {
                         style={{ backgroundImage: `url(${visa.visaInfo.countryImage})` }}
                         key={visa._id}>
 
-                        <div className='bg-[#feffbdc2] py-8 '>
-                            <div className='flex items-center justify-between gap-4  px-2 md:px-20'>
+                        <div className='bg-[#feffbdc2] py-4 md:py-8 '>
+                            <div className='md:flex items-center justify-between gap-4  px-2 md:px-20'>
 
-                                <div className="w-1/3 h-[200px]  md:h-[250px]">
+                                <div className="md:w-1/3 h-[200px]  my-3 md:my-0 md:h-[250px]">
                                     <img src={visa.visaInfo.countryImage}
                                         className="w-full h-full object-cover rounded-xl shadow-xl border border-black mx-auto" />
                                 </div>
 
-                                <div className='flex items-center gap-5 justify-evenly'>
+                                <div className='md:flex items-center gap-5 justify-evenly'>
                                     <div >
                                         {/* ----------------------text-------------------------- */}
                                         <div className='md:py-5 pl-5'>
@@ -70,15 +105,17 @@ const MyApplic = () => {
                                     </div>
                                 </div>
 
-                                <div className='bg-white rounded-xl shadow-md px-5 py-2'>
-                                    <h1 className='text-lg'>Applied by: <br /> <span className='text-2xl font-semibold'> {visa.name}</span></h1><hr />
-                                    <h1 className='text-lg'>Applied on: <br /> <span className='text-2xl font-semibold'> {visa.applyDate}</span></h1><hr />
-                                    <h1 className='text-lg'>Email: <br /> <span className='text-2xl font-semibold'> {visa.email}</span></h1><hr />
+                                <div className='bg-white rounded-xl shadow-md px-5 py-2 my-4 md:my-0'>
+                                    <h1 className='text-lg'>Applied by: <br /> <span className='md:text-3xl  text-xl font-bold font-serif'> {visa.name}</span></h1><hr />
+
+                                    <h1 className='md:text-lg'>Applied on: <br /> <span className='md:text-2xl font-semibold'> {visa.applyDate}</span></h1><hr />
+
+                                    <h1 className='md:text-lg'>Email: <br /> <span className='md:text-2xl font-semibold'> {visa.email}</span></h1><hr />
 
                                     {/* --------------buttons---------------------- */}
                                     <div className="flex justify-center my-5 gap-5">
                                         {/* -----delete */}
-                                        <button onClick={() => handleRemove(visa._id)} className="btn btn-outline ">
+                                        <button onClick={() => handleRemove(visa._id)} className="btn btn-outline btn-sm md:btn-md">
                                             Cancel Visa Application
                                         </button>
                                     </div>
