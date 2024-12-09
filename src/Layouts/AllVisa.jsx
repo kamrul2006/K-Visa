@@ -7,41 +7,6 @@ const AllVisa = () => {
     const VisaData = useLoaderData()
     const [AllVisa, setAllVisa] = useState(VisaData)
 
-    // -----------------------removing data---------------------
-    const handleRemove = (id) => {
-        console.log(id)
-
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to Delete this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        })
-            .then((result) => {
-                if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/visas/${id}`, {
-                        method: 'DELETE'
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            console.log(data);
-                            if (data.deletedCount > 0) {
-                                const remaining = VisaData.filter(visa => visa._id !== id)
-                                setAllVisa(remaining)
-                                Swal.fire({
-                                    title: "Deleted!",
-                                    text: "Visa has been deleted.",
-                                    icon: "success"
-                                });
-                            }
-                        });
-                }
-            })
-    }
-
     return (
         <div>
             {/* ----------TITLE TEXT-------------- */}
@@ -60,53 +25,49 @@ const AllVisa = () => {
 
 
             {/* --------------------------all visa--------------------- */}
-            <div className="grid grid-cols-1 md:grid-cols-2 mx-10 md:mx-20 my-10">
-                {AllVisa.map(visa => <div className=" shadow-md my-4 flex flex-col items-center gap-5 mx-2 py-8 border rounded-md bg-[#FCDC2A]" key={visa._id}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-10 md:mx-10 my-10">
 
-                    <div className="w-3/4 h-[200px] md:h-[250px]">
-                        <img src={visa.countryImage} className="w-full h-full object-cover rounded-xl shadow-xl border border-black" />
-                    </div>
+                {AllVisa.map(visa =>
+                    <div
+                        className=" shadow-md my-4 gap-5 mx-2 py-8 border rounded-md bg-[#FCDC2A]"
+                        key={visa._id}>
 
-                    <div className=" flex flex-col justify-between items-center gap-4">
+                        <div className="w-3/4 mx-auto h-[200px] md:h-[250px] lg:h-[150px]">
+                            <img src={visa.countryImage} className="w-full h-full object-cover rounded-xl shadow-xl border mx-auto border-black" />
+                        </div>
 
-                        {/* ----------------------text-------------------------- */}
-                        <div className='px-4 md:h-[320px] md:px-10 md:py-5 bg-base-100'>
-                            <p className="my-2 bg-white text-center py-1 rounded-full text-yellow-950 text-lg font-serif italic font-semibold ">Country : {visa.countryName} </p>
+                        <div className="">
 
-                            <h1 className="text-xl font-bold">Visa Type : {visa.visaType}</h1>
+                            {/* ----------------------text-------------------------- */}
+                            <div className='md:py-5 text-center'>
 
-                            <p className="text-justify py-3 ">
-                                {visa.description}
-                            </p>
+                                <p className='bg-white text-xl font-serif italic font-semibold mb-2 w-full'> {visa.countryName}</p>
+
+                                <h1 className=" font-bold">Visa Type : {visa.visaType}</h1>
+
+                                <p className=" py-3 ">
+                                    Visa Fee: {visa.fee ? visa.fee : 300} $
+                                </p>
+                                <p className=" ">
+                                    Visa Validity: {visa.validity ? visa.validity : "5 years"} 
+                                </p>
+
+                            </div>
+
+
+                            {/* --------------buttons---------------------- */}
+                            <div className="flex items-center bg-white py-2 justify-center gap-5">
+
+                                {/* ---details */}
+                                <Link to={`/allVisa/${visa._id}`}>
+                                    <button className="btn btn-sm btn-outline">
+                                        Details
+                                    </button></Link>
+                            </div>
 
                         </div>
 
-
-                        {/* --------------buttons---------------------- */}
-                        <div className="flex gap-5">
-
-                            {/*-----update */}
-                            <Link to={`/updateVisa/${visa._id}`}>
-                                <button className="btn btn-sm btn-circle">
-                                    <img src="https://img.icons8.com/pulsar-gradient/50/edit.png" className="w-7" />
-                                </button>
-                            </Link>
-
-                            {/* -----delete */}
-                            <button onClick={() => handleRemove(visa._id)} className="btn btn-sm btn-circle mx-2 md:mx-0">
-                                <img className="w-7" src="https://img.icons8.com/color/48/delete-forever.png" alt="delete-forever" />
-                            </button>
-
-                            {/* ---details */}
-                            <Link to={`/allVisa/${visa._id}`}>
-                                <button className="btn btn-sm btn-circle">
-                                    <img className="w-7" src="https://img.icons8.com/avantgarde/50/about.png" alt="about" />
-                                </button></Link>
-                        </div>
-
-                    </div>
-
-                </div>)}
+                    </div>)}
 
             </div>
         </div>

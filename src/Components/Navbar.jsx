@@ -8,18 +8,11 @@ const Navbar = () => {
 
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/allVisa'}>All visas</NavLink></li>
         <li><NavLink to={'/addVisa'}>Add Visa</NavLink></li>
-
-        {/* <li>
-            <details>
-                <summary>My work</summary>
-                <ul className="p-2 bg-secondary-content text-gray-400"> */}
-        <li className=''><NavLink to={'/myAdded'}>My added visas</NavLink></li>
+        <li><NavLink to={'/allVisa'}>All visas</NavLink></li>
+        <li><NavLink to={'/myAdded'}>My added visas</NavLink></li>
         <li><NavLink to={'/myApply'}>My Visa applications</NavLink></li>
-        {/* </ul>
-            </details>
-        </li> */}
+
     </>
 
 
@@ -86,7 +79,7 @@ const Navbar = () => {
                     <div>
                         {user ?
                             <div className="dropdown dropdown-left dropdown-hover">
-                                <div tabIndex={0} role="button" className=" m-1 w-16 h-16">
+                                <div tabIndex={0} role="button" className=" m-1 w-12 h-12">
                                     <img src={user.photoURL} className="w-full h-full object-cover border-2 border-yellow-400 rounded-full" />
                                 </div>
                                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">

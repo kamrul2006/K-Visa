@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const AddVisaPage = () => {
 
+    const { user } = useContext(AuthContext)
+    // console.log(user.email)
     const [selectedLabels, setSelectedLabels] = useState([]);
 
     const handleCheckboxChange = (e) => {
@@ -19,36 +22,35 @@ const AddVisaPage = () => {
         }
     };
 
-    console.log(selectedLabels)
+    // console.log(selectedLabels)
 
     const HandleAddVisa = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
+
+        const description = e.target.description.value
+        const ageRestriction = e.target.ageRestriction.value;
+        const fee = e.target.fee.value;
+        const validity = e.target.validity.value
+
+        // console.log(description)
+
         const VisaData = {
-
             countryImage: formData.get("countryImage "),
-
             countryName: formData.get("countryName "),
-
             visaType: formData.get("visaType "),
-
             processingTime: formData.get("processingTime "),
-
             requiredDocuments: selectedLabels,
-
-            description: formData.get("description "),
-
-            ageRestriction: formData.get("ageRestriction "),
-
-            fee: formData.get("fee "),
-
-            validity: formData.get("validity "),
-            
-            applicationMethod: formData.get("applicationMethod ")
+            description,
+            ageRestriction,
+            fee,
+            validity,
+            applicationMethod: formData.get("applicationMethod "),
+            addedBy: user.email
         };
 
 
-        console.log(VisaData)
+        // console.log(VisaData)
 
         //------------------sending data to server----------------------
         fetch('http://localhost:5000/visas', {
@@ -60,7 +62,7 @@ const AddVisaPage = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Successful',
@@ -135,13 +137,17 @@ const AddVisaPage = () => {
 
                         <textarea
                             className="mt-1 w-full border border-gray-300 shadow-md p-2 rounded-md"
-                            name="description "
+                            name="description"
                             placeholder="Enter description " />
                     </div>
 
                     <div className="mb-4 ">
                         <label className="block text-sm font-medium text-gray-700 "> Age Restriction </label>
-                        <input type="number" name="ageRestriction" placeholder="Enter minimum age" id="hh" required className="mt-1 w-full shadow-md p-2 border border-gray-300" />
+                        <input type="number"
+                            name="ageRestriction"
+                            placeholder="Enter minimum age"
+                            id="hh" required
+                            className="mt-1 w-full shadow-md p-2 border border-gray-300" />
                     </div>
 
                     <div className="mb-4 ">

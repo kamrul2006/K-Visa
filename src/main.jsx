@@ -12,6 +12,8 @@ import SignUpSection from './Auth/SignUp';
 import AuthProvider from './Providers/AuthProvider';
 import PrivetRout from './Privet/Privetrought';
 import VisaDetails from './Components/VisaDetails';
+import MyAdded from './Layouts/MyAdded';
+import MyApplic from './MyApplic';
 
 const router = createBrowserRouter([
   {
@@ -30,8 +32,18 @@ const router = createBrowserRouter([
       },
       {
         path: '/allVisa/:id',
-        loader: () => fetch('http://localhost:5000/visas'),
+        loader: ({ params }) => fetch(`http://localhost:5000/visas/${params.id}`),
         element: <PrivetRout><VisaDetails></VisaDetails></PrivetRout>,
+      },
+      {
+        path: '/myAdded',
+        loader: () => fetch("http://localhost:5000/visas"),
+        element: <PrivetRout><MyAdded></MyAdded></PrivetRout>,
+      },
+      {
+        path: '/myApply',
+        loader: () => fetch("http://localhost:5000/visas"),
+        element: <PrivetRout><MyApplic></MyApplic></PrivetRout>,
       },
     ]
   },
