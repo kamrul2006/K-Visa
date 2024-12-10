@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Slide } from 'react-awesome-reveal';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { TbMapSearch } from "react-icons/tb";
 import nodata from "../assets/nodatas.png"
+import { AuthContext } from '../Providers/AuthProvider';
 
 
 const MyApplic = () => {
+    const { user } = useContext(AuthContext)
+    const data = useLoaderData()
+    const myVisa = data.filter(data => data.email == user.email);
+    // console.log(myVisa)
+    const [applies, setApplies] = useState(myVisa)
 
-    const myApp = useLoaderData()
-    const [applies, setApplies] = useState(myApp)
+    // console.log(applies, user, myVisa)
 
-    // console.log(applies)
 
     // -----------------------removing data---------------------
     const handleRemove = (id) => {
@@ -28,7 +32,7 @@ const MyApplic = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/apply/${id}`, {
+                    fetch(`https://visa-dir-server.vercel.app/apply/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -57,11 +61,12 @@ const MyApplic = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/apply?Search=${Search}`)
+        fetch(`https://visa-dir-server.vercel.app/apply?Search=${Search}`)
             .then(res => res.json())
-            .then(data => {
-                // console.log(data)
-                setApplies(data)
+            .then(t => {
+                // console.log(t)
+                const V = t.filter(data => data.email == user.email);
+                setApplies(V)
             })
     }, [Search])
     // console.log(Search)

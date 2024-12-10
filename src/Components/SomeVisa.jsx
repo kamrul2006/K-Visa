@@ -6,7 +6,7 @@ const SomeVisa = () => {
 
     const [visas, setVisas] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/visas')
+        fetch('https://visa-dir-server.vercel.app/visas')
             .then(res => res.json())
             .then(data => setVisas(data))
     }, [])

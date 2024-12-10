@@ -27,22 +27,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/allVisa",
-        loader: () => fetch('http://localhost:5000/visas'),
+        loader: () => fetch('https://visa-dir-server.vercel.app/visas'),
         element: <PrivetRout><AllVisa></AllVisa></PrivetRout>,
       },
       {
         path: '/allVisa/:id',
-        loader: ({ params }) => fetch(`http://localhost:5000/visas/${params.id}`),
+        loader: ({ params }) => fetch(`https://visa-dir-server.vercel.app/visas/${params.id}`),
         element: <PrivetRout><VisaDetails></VisaDetails></PrivetRout>,
       },
       {
         path: '/myAdded',
-        loader: () => fetch("http://localhost:5000/visas"),
+        loader: () => fetch("https://visa-dir-server.vercel.app/visas"),
         element: <PrivetRout><MyAdded></MyAdded></PrivetRout>,
       },
       {
         path: '/myApply',
-        loader: () => fetch("http://localhost:5000/apply"),
+        loader: () => fetch("https://visa-dir-server.vercel.app/apply"),
         element: <PrivetRout><MyApplic></MyApplic></PrivetRout>,
       },
     ]
