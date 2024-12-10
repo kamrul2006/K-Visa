@@ -70,7 +70,7 @@ const SignUpSection = () => {
 
                 sendEmailVerification(auth.currentUser)
                     .then(() => {
-                        //                 console.log('Email verification sent!')
+                        //  console.log('Email verification sent!')
                     })
             });
 

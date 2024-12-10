@@ -30,7 +30,7 @@ const MyApplic = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
+                            // console.log(data);
                             if (data.deletedCount > 0) {
                                 const remaining = myApp.filter(visa => visa._id !== id)
                                 setApplies(remaining)
