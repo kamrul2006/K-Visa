@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import biman from '../assets/Biman.json'
+import biman from '../assets/PPas.json'
+import Ban3 from '../assets/t-bg.json'
 import many from '../assets/Many.gif'
-import done from '../assets/dance.gif'
 import Lottie from 'lottie-react';
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
 
@@ -124,8 +124,9 @@ const BannerHome = () => {
 
                         <div className="md:flex items-center justify-between gap-5 w-full">
                             {/* ------------------image------------------- */}
-                            <div className='md:'>
-                                <img src={done} className='mx-auto w-1/2 md:w-full mt-5' />
+                            <div className='md:'> 
+                                {/* <img src={done} className='mx-auto w-1/2 md:w-full mt-5' /> */}
+                                <Lottie animationData={Ban3} loop={true}></Lottie>
                             </div>
 
                             {/* ---------------text part 1 ------------------ */}
@@ -133,7 +134,6 @@ const BannerHome = () => {
                                 <h1 className="md:text-6xl text-2xl font-bold md:pl-36 md:pr-1">
                                     <span>{textii}</span>
                                     <Cursor cursorColor='green' />
-
                                 </h1>
 
                                 <p className='md:pl-36 text-xs md:text-base font-serif italic'>

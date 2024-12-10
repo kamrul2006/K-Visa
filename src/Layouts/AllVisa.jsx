@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { JackInTheBox } from 'react-awesome-reveal';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -28,46 +29,47 @@ const AllVisa = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-10 md:mx-10 my-10">
 
                 {AllVisa.map(visa =>
-                    <div
-                        className=" shadow-md my-4 gap-5 mx-2 py-8 border rounded-md bg-[#FCDC2A]"
-                        key={visa._id}>
+                    <JackInTheBox>
+                        <div
+                            className=" shadow-md my-4 gap-5 mx-2 py-8 border rounded-md bg-[#FCDC2A]"
+                            key={visa._id}>
 
-                        <div className="w-3/4 mx-auto h-[200px] md:h-[250px] lg:h-[150px]">
-                            <img src={visa.countryImage} className="w-full h-full object-cover rounded-xl shadow-xl border mx-auto border-black" />
-                        </div>
+                            <div className="w-3/4 mx-auto h-[200px] md:h-[250px] lg:h-[150px]">
+                                <img src={visa.countryImage} className="w-full h-full object-cover rounded-xl shadow-xl border mx-auto border-black" />
+                            </div>
 
-                        <div className="">
+                            <div className="">
 
-                            {/* ----------------------text-------------------------- */}
-                            <div className='md:py-5 text-center'>
+                                {/* ----------------------text-------------------------- */}
+                                <div className='md:py-5 text-center'>
 
-                                <p className='bg-white text-xl font-serif italic font-semibold mb-2 w-full'> {visa.countryName}</p>
+                                    <p className='bg-white text-xl font-serif italic font-semibold mb-2 w-full'> {visa.countryName}</p>
 
-                                <h1 className=" font-bold">Visa Type : {visa.visaType}</h1>
+                                    <h1 className=" font-bold">Visa Type : {visa.visaType}</h1>
 
-                                <p className=" py-3 ">
-                                    Visa Fee: {visa.fee ? visa.fee : 300} $
-                                </p>
-                                <p className=" ">
-                                    Visa Validity: {visa.validity ? visa.validity : "5 years"} 
-                                </p>
+                                    <p className=" py-3 ">
+                                        Visa Fee: {visa.fee ? visa.fee : 300} $
+                                    </p>
+                                    <p className=" ">
+                                        Visa Validity: {visa.validity ? visa.validity : "5 years"}
+                                    </p>
+
+                                </div>
+
+
+                                {/* --------------buttons---------------------- */}
+                                <div className="flex items-center bg-white py-2 justify-center gap-5">
+
+                                    {/* ---details */}
+                                    <Link to={`/allVisa/${visa._id}`}>
+                                        <button className="btn btn-sm btn-outline">
+                                            Details
+                                        </button></Link>
+                                </div>
 
                             </div>
 
-
-                            {/* --------------buttons---------------------- */}
-                            <div className="flex items-center bg-white py-2 justify-center gap-5">
-
-                                {/* ---details */}
-                                <Link to={`/allVisa/${visa._id}`}>
-                                    <button className="btn btn-sm btn-outline">
-                                        Details
-                                    </button></Link>
-                            </div>
-
-                        </div>
-
-                    </div>)}
+                        </div></JackInTheBox>)}
 
             </div>
         </div>
