@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { JackInTheBox } from 'react-awesome-reveal';
 import { Link, useLoaderData } from 'react-router-dom';
+import nodata from "../assets/nodatas.png"
 
 const AllVisa = () => {
 
@@ -51,7 +52,10 @@ const AllVisa = () => {
 
 
             {/* --------------------------all visa--------------------- */}
-            {AllVisa.length == 0 ? <div> <h1 className='text-4xl font-mono font-black text-center my-10'>No Visa Available</h1> </div> :
+            {AllVisa.length == 0 ? <div>
+                <h1 className='md:text-4xl text-2xl font-mono font-black text-center mt-10'>No Visa Available</h1>
+                <img src={nodata} className='mx-auto' />
+            </div> :
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-10 md:mx-10 my-10">
                     {
                         AllVisa.map(visa =>

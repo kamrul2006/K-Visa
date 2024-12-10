@@ -28,9 +28,9 @@ const VisaDetails = () => {
         const applyDate = formData.date.value
         const name = Fname + " " + Lname
         const visaInfo = visa
-
+        const countryName = visa.countryName
         const AppliCationData = {
-            email, applyDate, name, visaInfo
+            email, applyDate, name, visaInfo, countryName
         }
 
         // console.log(AppliCationData)
