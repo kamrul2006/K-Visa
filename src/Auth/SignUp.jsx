@@ -7,8 +7,18 @@ import { auth } from '../Firebase/firebase.config'
 import { sendEmailVerification } from "firebase/auth";
 import { FaAnglesLeft } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import Footer from "../Components/Footer";
+import { useTypewriter } from "react-simple-typewriter";
+import visa from '../assets/visa.gif'
+
 
 const SignUpSection = () => {
+    const [text] = useTypewriter({
+        words: ['K-Visas'],
+        loop: true
+    })
+
+
     useEffect(() => {
         document.title = "K-Visa || Sign Up"
     }, [])
@@ -100,9 +110,18 @@ const SignUpSection = () => {
 
     return (
         <div>
-            <Link to={'/'} className="my-10 mx-auto">
-                <button className="btn btn-outline mx-10 my-10 px-5 text-xl "><FaAnglesLeft />  Go Back to Home</button>
-            </Link>
+            <div className="bg-base-content w-full flex items-center justify-evenly mb-10 ">
+                <div className='flex items-center px-5 w-1/2'>
+                    <img src={visa} className="md:w-20 w-10 rounded-xl" />
+                    <a className="md:text-3xl text-white text-xl font-serif font-semibold italic ">  <span>{text}</span></a>
+                </div>
+
+                <Link to={'/'} className=" mx-auto">
+                    <button className="btn btn-sm md:btn-md btn-outline btn-success mx-10 my-4 md:px-5 md:text-xl "><FaAnglesLeft />  Go Back to Home</button>
+                </Link>
+            </div>
+
+
             <div className="flex items-center justify-center ">
                 <div className=" p-8 max-w-md w-full my-5">
                     <h2 className="text-3xl font-bold text-black text-center mb-6">Sign up to <span className="text-green-700"> K-Visa </span></h2>
@@ -196,6 +215,8 @@ const SignUpSection = () => {
                     </p>
                 </div>
             </div>
+
+            <Footer></Footer>
         </div>
     );
 };

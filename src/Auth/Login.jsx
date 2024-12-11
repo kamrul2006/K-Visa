@@ -3,10 +3,20 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FaAnglesLeft } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import Footer from "../Components/Footer";
+import visa from '../assets/visa.gif'
+import { useTypewriter } from "react-simple-typewriter";
 
 
 
 const LoginPage = () => {
+
+  const [text] = useTypewriter({
+    words: ['K-Visas'],
+    loop: true
+  })
+
+
   useEffect(() => {
     document.title = "K-Visa || Log in"
   }, [])
@@ -66,9 +76,17 @@ const LoginPage = () => {
 
   return (
     <div>
-      <Link to={'/'} className="my-10 mx-auto">
-        <button className="btn btn-outline mx-10 my-10 px-5 text-xl "><FaAnglesLeft />  Go Back to Home</button>
-      </Link>
+      <div className="bg-base-content w-full flex items-center justify-evenly mb-10 ">
+        <div className='flex items-center px-5 w-1/2'>
+          <img src={visa} className="md:w-20 w-10 rounded-xl" />
+          <a className="md:text-3xl text-white text-xl font-serif font-semibold italic ">  <span>{text}</span></a>
+        </div>
+
+        <Link to={'/'} className=" mx-auto">
+          <button className="btn btn-sm md:btn-md btn-outline btn-success mx-10 my-4 md:px-5 md:text-xl "><FaAnglesLeft />  Go Back to Home</button>
+        </Link>
+      </div>
+
       <div className="min-h-screen flex items-center justify-center ">
         <div className="p-8 rounded-lg  max-w-md w-full">
           <h2 className="text-3xl font-bold text-center text-indigo-700 mb-6">Welcome Back</h2>
@@ -138,7 +156,10 @@ const LoginPage = () => {
             Don’t have an account? <Link to='/signUp' className="text-indigo-500 font-semibold hover:underline">Sign Up</Link>
           </p>
         </div>
-      </div></div>
+      </div>
+
+      <Footer></Footer>
+    </div>
   );
 };
 
