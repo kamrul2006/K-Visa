@@ -24,7 +24,7 @@ const Navbar = () => {
 
 
     return (
-        <div>
+        <div className='fixed z-50 w-full'>
 
             <div className="navbar bg-base-content text-white">
                 <div className="navbar-start">

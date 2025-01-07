@@ -27,7 +27,7 @@ const BannerHome = () => {
 
 
     return (
-        <div className=" ">
+        <div className="">
 
             {/* -----------------BannerHome--------------------- */}
             <div >

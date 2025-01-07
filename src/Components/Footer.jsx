@@ -2,15 +2,27 @@ import { Link } from "react-router-dom";
 import { FiPhone, FiMail } from "react-icons/fi";
 import { HiLocationMarker } from "react-icons/hi";
 import { FaFacebook, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
+import visaIco from "../assets/visa.gif"
+import { useTypewriter } from "react-simple-typewriter";
 
 const Footer = () => {
+    const [text] = useTypewriter({
+        words: ['K-Visas'],
+        loop: true
+    })
+
     // const { user, } = useContext(AuthContext)
     return (
         <div>
-            <footer className="  bg-[#F7F6BB] md:py-16  text-black rounded px-10">
+            <footer className="  bg-[#F7F6BB] md:py-10  text-black rounded px-10">
 
                 <div className="md:flex flex-col md:flex-row items-center justify-center md:justify-between">
                     <div>
+                        <div className="flex items-center">
+                            <img src={visaIco} alt="" className="w-20"/>
+                            <a className="md:text-3xl text-xl font-serif font-semibold italic ">  <span>{text}</span></a>
+                        </div>
+
                         <div className=" md:flex gap-4 text-center">
                             <Link className="hover:underline" to={'/'}><p>Home</p></Link>
                             <Link className="hover:underline" to={'/allVisa'}><p>All Visa</p></Link>
