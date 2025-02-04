@@ -4,7 +4,6 @@
 - *K-VISA* is a Visa Navigator Portal to simplify the process of checking visa requirements, applying for visas online, and tracking applications. This project includes a dynamic user interface, robust functionality, and seamless user experience also.
 --------------------
 # Live Link : https://k-visa-portal.web.app/
-# Repo Link: https://github.com/programming-hero-web-course2/b10-a10-client-side-kamrul2006
 
 --------------------
 
